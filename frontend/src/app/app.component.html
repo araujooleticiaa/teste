@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="card list-car">
+    <h5 class="card-header">Lista de Usuários</h5>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.nome}}</td>
+            <td>{{user.cpf}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.telefone}}</td>
+            <td>{{user.sexo}}</td>
+            <td>{{user.dataNascimento}}</td>
+            <td>
+              <button type="button" class="btn btn-warning btn-sm" (click)="editUser(user)">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteUser(user)"><i class="fas fa-times"></i> Deletar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div  class="card add-car">
+    <h5 class="card-header">Adicionar ou Atualizar Usuário</h5>
+    <div class="card-body">
+      <form id="add-form" (ngSubmit)="saveUser(f)" #f="ngForm" novalidate>
+
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" [(ngModel)]="user.nome" required id="nome" name="nome" #nome="ngModel" class="form-control" placeholder="Digite o nome">
+        </div>
+
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input type="number" id="cpf" required [(ngModel)]="user.cpf" name="cpf"  #cpf="ngModel" class="form-control" placeholder="Digite o CPF">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email"  required name="email"  [(ngModel)]="user.email" #email="ngModel" class="form-control" placeholder="Digite o email">
+        </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="number" required id="telefone" name="telefone" [(ngModel)]="user.telefone" #telefone="ngModel" class="form-control" placeholder="Digite o telefone">
+        </div>
+
+        <div class="form-group">
+          <label for="sexo">Sexo</label>
+          <select required type="text" id="sexo" name="sexo" #sexo="ngModel" [(ngModel)]="user.sexo" class="form-control">
+            <option selected value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="prefiro-nao-responder">Prefiro não responder</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label required for="dataNascimento">Data de Nascimento</label>
+          <input type="date" id="dataNascimento" value="10-12-2000" [(ngModel)]="user.dataNascimento" #dataNascimento="ngModel" name="dataNascimento"  class="form-control"
+            placeholder="Digite a data de nascimento">
+        </div>
+
+
+        <button type="submit" class="btn btn-primary btn-add-car"><i class="far fa-save"></i> Salvar</button>
+        <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</div>
