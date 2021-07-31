@@ -1,4 +1,4 @@
-<h2 align="center">💡 Teste BRQ - Letícia Araujo</h2>
+<h2 align="center">💡 Teste - Letícia Araujo</h2>
 
 <hr/>
 
